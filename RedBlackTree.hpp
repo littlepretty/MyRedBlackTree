@@ -2,7 +2,6 @@
 #define RED_BLACK_TREE_HPP
 
 #include <iostream>
-
 #include "BinarySearchTree.hpp"
 
 class RedBlackTree: public BinarySearchTree 
@@ -12,6 +11,11 @@ class RedBlackTree: public BinarySearchTree
         virtual ~RedBlackTree();
 
         virtual void insert(int key);
+
+    private:
+        void leftRotate(BinaryTreeNode*& node);
+        void rightRotate(BinaryTreeNode*& node);
+
 };
 
 #endif
