@@ -8,10 +8,10 @@ BinarySearchTree::~BinarySearchTree()
 {
 }
 
-void BinarySearchTree::insert(int key)
+BinaryTreeNode* BinarySearchTree::insert(int key)
 {
     BinaryTreeNode* current = root;
-    std::cout<<"Check Root "<<root->key<<std::endl;
+    // std::cout<<"Check Root "<<root->key<<std::endl;
     while(current != NULL)
     {
         // std::cout<<"At Node("<<current->key<<")"<<std::endl;
@@ -24,8 +24,8 @@ void BinarySearchTree::insert(int key)
         if(current->key > key) {
             if(current->left == NULL) {
                 std::cout<<"Node("<<key<<") Inserted As Left Child of Node("<<current->key<<")"<<std::endl;
-                insertAsLeftChild(current, key);
-                return;
+                BinaryTreeNode* result = insertAsLeftChild(current, key);
+                return result;
             } else {
                 current = current->left;
                 // continue;
@@ -34,15 +34,34 @@ void BinarySearchTree::insert(int key)
         else if (current->key < key){
             if(current->right == NULL) {
                 std::cout<<"Node("<<key<<") Inserted As Right Child of Node("<<current->key<<")"<<std::endl;
-                insertAsRightChild(current, key);
-                return;
+                BinaryTreeNode* result = insertAsRightChild(current, key);
+                return result;
             } else {
                 current = current->right;
                 // continue;
             }
         } else {
             std::cout<<"Node("<<key<<") Already Exsists"<<std::endl;
-            return;
+            return current;
         }
     }
+    return NULL;
+}
+
+BinaryTreeNode* BinarySearchTree::search(int key)
+{
+    BinaryTreeNode* current = root;
+    while(current != NULL)
+    {
+        if(current->key < key) {
+            current = current->right;
+        } else if(current->key > key) {
+            current = current->left;
+        } else {
+            std::cout<<"Find Node("<<current->key<<") in Tree"<<std::endl;
+            return current;
+        }
+    }
+    std::cout<<"Cannot Find Node("<<key<<") in Tree"<<std::endl;
+    return NULL;
 }

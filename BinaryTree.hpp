@@ -19,6 +19,9 @@ struct BinaryTreeNode
     explicit BinaryTreeNode(int k);
 
     virtual ~BinaryTreeNode();
+    void inOrderPrint() const;
+    void preOrderPrint() const;
+
 
     private:
         std::string getColorDescription();
@@ -32,16 +35,19 @@ class BinaryTree
     protected:
         BinaryTreeNode* root;
         int numNodes;
-        void insertAsLeftChild(BinaryTreeNode*& parent, int key);
-        void insertAsRightChild(BinaryTreeNode*& parent, int key);
+        BinaryTreeNode* insertAsLeftChild(BinaryTreeNode*& parent, int key);
+        BinaryTreeNode* insertAsRightChild(BinaryTreeNode*& parent, int key);
 
     public:
         explicit BinaryTree(int rootKey);
         virtual ~BinaryTree();
         
-        virtual void insert(int key); 
+        virtual BinaryTreeNode* insert(int key);
 
-        friend std::ostream& operator<<(std::ostream& os, const BinaryTree& tree);
+        void inOrderPrint() const;
+        void preOrderPrint() const;
+
+        // friend std::ostream& operator<<(std::ostream& os, const BinaryTree& tree);
 };
 
 #endif

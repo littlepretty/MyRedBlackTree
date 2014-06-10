@@ -10,7 +10,9 @@ class BinarySearchTree: public BinaryTree
         explicit BinarySearchTree(int rootKey);
         virtual ~BinarySearchTree();
 
-        virtual void insert(int key);
+        virtual BinaryTreeNode* insert(int key);
+
+        virtual BinaryTreeNode* search(int key);
 };
 
 #endif

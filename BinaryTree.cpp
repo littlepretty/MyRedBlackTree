@@ -30,21 +30,47 @@ std::string BinaryTreeNode::getColorDescription()
     }
 }
 
+
 std::ostream& operator<<(std::ostream& os, const BinaryTreeNode& node)
 {
-    // Pre-Order Traverse for BST
-    if(node.left != NULL) {
-        os<<*(node.left)<<"\t";
-    }
-
-    os<<"Node("<<node.key<<")\t";
-    
-    if(node.right != NULL) {
-        os<<*(node.right)<<"\t";
-    }
+    os<<"Node("<<node.key<<")  ";
     return os;
 }
 
+void BinaryTreeNode::inOrderPrint() const 
+{
+    // In-Order Traverse for BST
+    std::cout<<"Node("<<key<<")  ";
+    
+    if(left != NULL) {
+        // (*left).inOrderPrint(os);
+        // std::cout<<*(left);
+        (*left).inOrderPrint();
+    }
+
+    if(right != NULL) {        
+        // std::cout<<*(right);
+        (*right).inOrderPrint();
+    }
+    // return os;
+}
+
+void BinaryTreeNode::preOrderPrint() const 
+{
+    // Pre-Order Traverse for BST
+    if(left != NULL) {
+        (*left).preOrderPrint();
+        // std::cout<<*(left);
+    }
+
+    std::cout<<"Node("<<key<<")  ";
+    
+    if(right != NULL) {
+        (*right).preOrderPrint();
+        // std::cout<<*(right);
+    }
+    // return os;
+}
 
 
 BinaryTree::BinaryTree(int rootKey): root(new BinaryTreeNode(rootKey)), numNodes(1)
@@ -69,18 +95,18 @@ BinaryTree::~BinaryTree()
     }
 }
 
-void BinaryTree::insert(int key)
+BinaryTreeNode* BinaryTree::insert(int key)
 {
     BinaryTreeNode* current = root;
     while(true) {
         if(current->left == NULL) {
             std::cout<<"Insert "<<key<<" As Left of Node("<<current->key<<")"<<std::endl;
-            insertAsLeftChild(current, key);
-            break;
+            BinaryTreeNode *result = insertAsLeftChild(current, key);
+            return result;
         } else if(current->right == NULL) {
             std::cout<<"Insert "<<key<<" As Right of Node("<<current->key<<")"<<std::endl;
-            insertAsRightChild(current, key);
-            break;
+            BinaryTreeNode* result = insertAsRightChild(current, key);
+            return result;
         } else {
             if(coin->flipCoinOnce()) {
                 current = current->left;
@@ -93,24 +119,47 @@ void BinaryTree::insert(int key)
     }
 }
 
-void BinaryTree::insertAsLeftChild(BinaryTreeNode*& parent, int key)
+BinaryTreeNode* BinaryTree::insertAsLeftChild(BinaryTreeNode*& parent, int key)
 {
     BinaryTreeNode* left = new BinaryTreeNode(key);
     parent->left = left;
     left->parent = parent;
+    return left;
 }
 
-void BinaryTree::insertAsRightChild(BinaryTreeNode*& parent, int key)
+BinaryTreeNode* BinaryTree::insertAsRightChild(BinaryTreeNode*& parent, int key)
 {
     BinaryTreeNode* right = new BinaryTreeNode(key);
     parent->right = right;
     right->parent = parent;
+    return right;
 }
 
+void BinaryTree::inOrderPrint() const
+{
+    // BinaryTreeNode* current = root;
+    if(root != NULL) {
+        (*root).inOrderPrint();
+    }
+    std::cout<<std::endl;
+}
+void BinaryTree::preOrderPrint() const
+{
+    // BinaryTreeNode* current = root;
+    if(root != NULL) {
+        (*root).preOrderPrint();
+    }
+    std::cout<<std::endl;
+}
+
+/*
 std::ostream& operator<<(std::ostream& os, const BinaryTree& tree)
 {
-    os<<"---------Pred-Order Traverse Tree---------"<<std::endl;
-    os<<*(tree.root)<<std::endl;
-    return os<<std::endl;
+    // os<<"---------Pred-Order Traverse Tree---------"<<std::endl;
+    // os<<*(tree.root)<<std::endl;
+    return tree.preOrderPrint(os);
+    // return os<<std::endl;
 }
+*/
+
 
