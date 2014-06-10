@@ -10,11 +10,11 @@ class RedBlackTree: public BinarySearchTree
         explicit RedBlackTree(int rootKey);
         virtual ~RedBlackTree();
 
-        virtual void insert(int key);
+        virtual BinaryTreeNode* insert(int key);
 
-    private:
-        void leftRotate(BinaryTreeNode*& node);
-        void rightRotate(BinaryTreeNode*& node);
+    //private:
+        void leftRotate(BinaryTreeNode*& A);
+        void rightRotate(BinaryTreeNode*& A);
 
 };
 
