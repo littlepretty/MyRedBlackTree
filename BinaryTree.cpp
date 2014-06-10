@@ -1,33 +1,46 @@
 #include "BinaryTree.hpp"
 
 
-BinaryTreeNode::BinaryTreeNode(int k): key(k), parent(NULL), left(NULL), right(NULL)
+BinaryTreeNode::BinaryTreeNode(int k): key(k), color(RED), parent(NULL), left(NULL), right(NULL)
 {
 }
 
 BinaryTreeNode::~BinaryTreeNode()
 {
-    std::cout<<"---------Dispose Node ("<<key<<")---------"<<std::endl;
     if(left != NULL) {
         delete left;
         // left = NULL;
     }
+    
+    std::cout<<"---------Dispose "<<getColorDescription()<<" Node ("<<key<<")---------"<<std::endl;
+    
     if(right != NULL) {
         delete right;
         // right = NULL;
     }
-    
     // parent = NULL;
+}
+
+std::string BinaryTreeNode::getColorDescription()
+{
+    if(color == RED) {
+        return "Red";
+    } else {
+        return "Black";
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const BinaryTreeNode& node)
 {
-    os<<"node("<<node.key<<")\t";
+    // Pre-Order Traverse for BST
     if(node.left != NULL) {
-        os<<"left child: "<<*(node.left)<<"\t";
+        os<<*(node.left)<<"\t";
     }
+
+    os<<"Node("<<node.key<<")\t";
+    
     if(node.right != NULL) {
-        os<<"right child: "<<*(node.right)<<"\t";
+        os<<*(node.right)<<"\t";
     }
     return os;
 }
@@ -53,8 +66,6 @@ BinaryTree::~BinaryTree()
     {
         std::cout<<"---------Dispose FlipCoin---------"<<std::endl;
         delete coin;
-    } else {
-        std::cout<<"----------Coin is NULL-----------"<<std::endl;
     }
 }
 
@@ -98,7 +109,7 @@ void BinaryTree::insertAsRightChild(BinaryTreeNode*& parent, int key)
 
 std::ostream& operator<<(std::ostream& os, const BinaryTree& tree)
 {
-    os<<"---------In Order Traverse Tree---------"<<std::endl;
+    os<<"---------Pred-Order Traverse Tree---------"<<std::endl;
     os<<*(tree.root)<<std::endl;
     return os<<std::endl;
 }
