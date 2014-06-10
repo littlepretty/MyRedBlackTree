@@ -7,7 +7,7 @@
 class BinarySearchTree: public BinaryTree
 {
     public:
-        explicit BinarySearchTree(int k);
+        explicit BinarySearchTree(int rootKey);
         virtual ~BinarySearchTree();
 
         virtual void insert(int key);

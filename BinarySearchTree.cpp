@@ -1,6 +1,6 @@
 #include "BinarySearchTree.hpp"
 
-BinarySearchTree::BinarySearchTree(int k): BinaryTree::BinaryTree(k)
+BinarySearchTree::BinarySearchTree(int rootKey): BinaryTree::BinaryTree(rootKey)
 {
 }
 
