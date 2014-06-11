@@ -11,16 +11,15 @@ BinarySearchTree::~BinarySearchTree()
 BinaryTreeNode* BinarySearchTree::insert(int key)
 {
     BinaryTreeNode* current = root;
-    // std::cout<<"Check Root "<<root->key<<std::endl;
+    //std::cout<<"Check Root "<<root->key<<std::endl;
     while(current != NULL)
     {
-        // std::cout<<"At Node("<<current->key<<")"<<std::endl;
+        //std::cout<<"At Node("<<current->key<<")"<<std::endl;
+        //std::cout<<"At Node("<<current->key<<")"<<std::endl;
+        //std::cout<<"Compare "<<(current->key<key)<<std::endl;
+        //std::cout<<"Check Left "<<current->left<<std::endl;
+        //std::cout<<"Check Right "<<current->right<<std::endl;
 
-        // std::cout<<"At Node("<<current->key<<")"<<std::endl;
-        // std::cout<<"Compare "<<(current->key<key)<<std::endl;
-        // std::cout<<"Check Left "<<current->left<<std::endl;
-        // std::cout<<"Check Right "<<current->right<<std::endl;
-    
         if(current->key > key) {
             if(current->left == NULL) {
                 std::cout<<"Node("<<key<<") Inserted As Left Child of Node("<<current->key<<")"<<std::endl;

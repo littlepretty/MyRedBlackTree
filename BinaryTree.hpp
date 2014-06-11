@@ -22,6 +22,7 @@ struct BinaryTreeNode
     void inOrderPrint() const;
     void preOrderPrint() const;
 
+    friend std::ostream& operator<<(std::ostream& os, const BinaryTreeNode& node);
 
     private:
         std::string getColorDescription();

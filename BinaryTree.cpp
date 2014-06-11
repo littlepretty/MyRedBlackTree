@@ -137,7 +137,6 @@ BinaryTreeNode* BinaryTree::insertAsRightChild(BinaryTreeNode*& parent, int key)
 
 void BinaryTree::inOrderPrint() const
 {
-    // BinaryTreeNode* current = root;
     if(root != NULL) {
         (*root).inOrderPrint();
     }
@@ -145,7 +144,6 @@ void BinaryTree::inOrderPrint() const
 }
 void BinaryTree::preOrderPrint() const
 {
-    // BinaryTreeNode* current = root;
     if(root != NULL) {
         (*root).preOrderPrint();
     }
