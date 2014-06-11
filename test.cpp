@@ -55,16 +55,17 @@ void TestRedBlackTreeRotate()
 
     /*
     tree.inOrderPrint();
-    BinaryTreeNode* node = tree.search(1);
+    BinaryTreeNode* node = tree.search(1); // search(3), search(2)
     tree.leftRotate(node);
     tree.inOrderPrint();
     */
     
     tree.inOrderPrint(); 
-    BinaryTreeNode* node = tree.search(7);
+    BinaryTreeNode* node = tree.search(9); // search(7), search(6)
     tree.rightRotate(node);
     tree.inOrderPrint();
-
+    
+    tree.preOrderPrint();
 }
 
 void TestRedBlackTreeInsert()
