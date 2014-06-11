@@ -73,12 +73,24 @@ void TestRedBlackTreeInsert()
     RedBlackTree tree(5);
     tree.insert(3);
     tree.insert(6);
+    tree.inOrderPrint();
+
     tree.insert(9);
+    tree.inOrderPrint();
     tree.insert(1);
+    
+    tree.inOrderPrint();
     tree.insert(2);
+    
+    tree.inOrderPrint();
     tree.insert(4);
+    tree.inOrderPrint();
+    
     tree.insert(7);
+    tree.inOrderPrint();
     tree.insert(8);
+    tree.inOrderPrint();
+    
     tree.preOrderPrint();
 }
 
@@ -95,9 +107,9 @@ void TestFlipCoin()
 
 int main()
 {
-    // TestFlipCoin();
-    // TestBinaryTree();
+    //TestFlipCoin();
+    //TestBinaryTree();
     //TestBinarySearchTree();
-    TestRedBlackTreeRotate();
-    // TestRedBlackTreeInsert();
+    //TestRedBlackTreeRotate();
+    TestRedBlackTreeInsert();
 }
