@@ -11,11 +11,12 @@ RedBlackTree::~RedBlackTree()
 BinaryTreeNode* RedBlackTree::insert(int key)
 {
     BinaryTreeNode* x = BinarySearchTree::insert(key);
+    BinaryTreeNode* result = x;
     while(x != root && x->parent->color == RED && x->parent->parent != NULL)
     {
         if(x->parent == x->parent->parent->left) {
             BinaryTreeNode* y = x->parent->parent->right;
-            if(y->color == RED) {
+            if(y != NULL && y->color == RED) {
                 // case 1
                 x->parent->color = BLACK;
                 y->color = BLACK;
@@ -36,10 +37,31 @@ BinaryTreeNode* RedBlackTree::insert(int key)
                 rightRotate(C);
             }
         } else {
-            
+            BinaryTreeNode* y = x->parent->parent->left;
+            if(y != NULL && y->color == RED) {
+                // case 1
+                x->parent->color = BLACK;
+                y->color = BLACK;
+                x = x->parent->parent;
+                x->color = RED;
+            } else {
+                if(x == x->parent->left) {
+                    // case 2
+                    BinaryTreeNode* A = x->parent;
+                    rightRotate(A); // change rotate direction
+                }
+                // case 3
+                BinaryTreeNode* B = x->parent;
+                BinaryTreeNode* C = x->parent->parent;
+                B->color = BLACK;
+                C->color = RED;
+                leftRotate(C); // change rotate direction
+            }
         }
     }
-    return NULL;
+    root->color = BLACK;
+
+    return result;
 }
 
 void RedBlackTree::leftRotate(BinaryTreeNode*& A)
@@ -60,7 +82,9 @@ void RedBlackTree::leftRotate(BinaryTreeNode*& A)
         
         // A->parent = NULL;
         A->right = B->left;
-        B->left->parent = A;
+        if(B->left) {
+            B->left->parent = A;
+        }
         // B->left = NULL;
         
         A->parent = B;
@@ -86,7 +110,9 @@ void RedBlackTree::rightRotate(BinaryTreeNode*& A)
         
         // A->parent = NULL;
         A->left = B->right;
-        B->right->parent = A;
+        if(B->right != NULL) {
+            B->right->parent = A;
+        }
         // B->left = NULL;
         
         A->parent = B;

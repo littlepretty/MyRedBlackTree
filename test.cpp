@@ -42,24 +42,32 @@ void TestBinarySearchTree()
 void TestRedBlackTreeRotate()
 {
     RedBlackTree tree(5);
-    tree.insert(3);
-    tree.insert(7);
-    tree.insert(6);
-    tree.insert(8); 
+    tree.BinarySearchTree::insert(1);
+    tree.BinarySearchTree::insert(9);
+    tree.BinarySearchTree::insert(3);
+    tree.BinarySearchTree::insert(7);
+    tree.BinarySearchTree::insert(6);
+    //tree.preOrderPrint();
+    tree.BinarySearchTree::insert(8);
+    tree.BinarySearchTree::insert(11);
+    tree.BinarySearchTree::insert(4);
+    tree.BinarySearchTree::insert(2);
 
-    BinaryTreeNode* node = tree.search(5);
+    /*
     tree.inOrderPrint();
-
+    BinaryTreeNode* node = tree.search(1);
     tree.leftRotate(node);
     tree.inOrderPrint();
-
-    node = tree.search(7);
+    */
+    
+    tree.inOrderPrint(); 
+    BinaryTreeNode* node = tree.search(7);
     tree.rightRotate(node);
     tree.inOrderPrint();
 
 }
 
-void TestRedBlackTree()
+void TestRedBlackTreeInsert()
 {
     RedBlackTree tree(5);
     tree.insert(3);
@@ -90,5 +98,5 @@ int main()
     // TestBinaryTree();
     //TestBinarySearchTree();
     TestRedBlackTreeRotate();
-    // TestRedBlackTree();
+    // TestRedBlackTreeInsert();
 }
