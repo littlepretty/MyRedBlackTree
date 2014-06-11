@@ -25,7 +25,7 @@ struct BinaryTreeNode
     friend std::ostream& operator<<(std::ostream& os, const BinaryTreeNode& node);
 
     private:
-        std::string getColorDescription();
+        std::string getColorDescription() const;
 };
 
 class BinaryTree

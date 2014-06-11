@@ -21,7 +21,7 @@ BinaryTreeNode::~BinaryTreeNode()
     // parent = NULL;
 }
 
-std::string BinaryTreeNode::getColorDescription()
+std::string BinaryTreeNode::getColorDescription() const
 {
     if(color == RED) {
         return "Red";
@@ -33,14 +33,14 @@ std::string BinaryTreeNode::getColorDescription()
 
 std::ostream& operator<<(std::ostream& os, const BinaryTreeNode& node)
 {
-    os<<"Node("<<node.key<<")  ";
+    os<<node.getColorDescription()<<" Node("<<node.key<<")  ";
     return os;
 }
 
 void BinaryTreeNode::inOrderPrint() const 
 {
     // In-Order Traverse for BST
-    std::cout<<"Node("<<key<<")  ";
+    std::cout<<getColorDescription()<<" Node("<<key<<")  ";
     
     if(left != NULL) {
         // (*left).inOrderPrint(os);
@@ -63,7 +63,7 @@ void BinaryTreeNode::preOrderPrint() const
         // std::cout<<*(left);
     }
 
-    std::cout<<"Node("<<key<<")  ";
+    std::cout<<getColorDescription()<<" Node("<<key<<")  ";
     
     if(right != NULL) {
         (*right).preOrderPrint();
@@ -137,6 +137,7 @@ BinaryTreeNode* BinaryTree::insertAsRightChild(BinaryTreeNode*& parent, int key)
 
 void BinaryTree::inOrderPrint() const
 {
+    std::cout<<"---------In-Order Traverse Tree---------"<<std::endl;
     if(root != NULL) {
         (*root).inOrderPrint();
     }
@@ -144,6 +145,7 @@ void BinaryTree::inOrderPrint() const
 }
 void BinaryTree::preOrderPrint() const
 {
+    std::cout<<"---------Pre-Order Traverse Tree---------"<<std::endl;
     if(root != NULL) {
         (*root).preOrderPrint();
     }
