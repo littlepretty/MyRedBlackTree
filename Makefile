@@ -1,6 +1,15 @@
 CC = g++
-CFLAGS = -c -Wall -std=c++11
-LDFLAGS = 
+
+LD = 
+
+CFLAGS = -c -Wall -Werror -std=c++11
+INCLUDES = 
+LIBS = 
+
+
+CFLAGS := $(CFLAGS) $(INCLUDES)
+LDFLAGS := $(LDFLAGS) $(LIBS)
+
 
 RBTree: test.o FlipCoin.o BinaryTree.o BinarySearchTree.o RedBlackTree.o
 	$(CC) test.o BinaryTree.o FlipCoin.o BinarySearchTree.o RedBlackTree.o -o RBTree
@@ -19,6 +28,9 @@ BinarySearchTree.o: BinarySearchTree.cpp
 
 RedBlackTree.o: RedBlackTree.cpp
 	$(CC) $(CFLAGS) RedBlackTree.cpp
+
+
+.PHONY: clean
 
 clean:
 	rm -rf *.o RBTree

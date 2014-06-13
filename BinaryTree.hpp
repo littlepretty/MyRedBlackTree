@@ -32,6 +32,7 @@ class BinaryTree
 {
     private:
         FlipCoin* coin;
+        int height(BinaryTreeNode* node);
 
     protected:
         BinaryTreeNode* root;
@@ -47,6 +48,8 @@ class BinaryTree
 
         void inOrderPrint() const;
         void preOrderPrint() const;
+
+        virtual int treeHeight();
 
         // friend std::ostream& operator<<(std::ostream& os, const BinaryTree& tree);
 };

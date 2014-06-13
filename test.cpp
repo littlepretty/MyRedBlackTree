@@ -53,6 +53,7 @@ void TestRedBlackTreeRotate()
     tree.BinarySearchTree::insert(4);
     tree.BinarySearchTree::insert(2);
 
+    // Set rotate functions as public before uncomment and test
     /*
     tree.inOrderPrint();
     BinaryTreeNode* node = tree.search(1); // search(3), search(2)
@@ -60,10 +61,12 @@ void TestRedBlackTreeRotate()
     tree.inOrderPrint();
     */
     
+    /*
     tree.inOrderPrint(); 
     BinaryTreeNode* node = tree.search(9); // search(7), search(6)
     tree.rightRotate(node);
     tree.inOrderPrint();
+    */
     
     tree.preOrderPrint();
 }
@@ -71,6 +74,11 @@ void TestRedBlackTreeRotate()
 void TestRedBlackTreeInsert()
 {
     RedBlackTree tree(1);
+    for(int i = 2; i < 32; i++)
+    {
+        tree.insert(i);
+    }
+    /*
     tree.insert(2);
     tree.insert(3);
     tree.inOrderPrint();
@@ -89,9 +97,12 @@ void TestRedBlackTreeInsert()
     tree.insert(8);
     tree.inOrderPrint();
     tree.insert(9);
+    */
+
     tree.inOrderPrint();
-    
     tree.preOrderPrint();
+    tree.treeHeight();
+
 }
 
 void TestFlipCoin()

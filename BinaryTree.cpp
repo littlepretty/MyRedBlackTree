@@ -1,5 +1,5 @@
 #include "BinaryTree.hpp"
-
+#include <algorithm>
 
 BinaryTreeNode::BinaryTreeNode(int k): key(k), color(RED), parent(NULL), left(NULL), right(NULL)
 {
@@ -152,6 +152,22 @@ void BinaryTree::preOrderPrint() const
     std::cout<<std::endl;
 }
 
+int BinaryTree::treeHeight()
+{
+    int h = height(root);
+    std::cout<<"Height of Tree: "<<h<<std::endl;
+    return h;
+}
+
+int BinaryTree::height(BinaryTreeNode* node)
+{
+    if(node == NULL)
+    {
+        return 0; 
+    } else {
+        return 1 + std::max(height(node->left), height(node->right));
+    }
+}
 /*
 std::ostream& operator<<(std::ostream& os, const BinaryTree& tree)
 {
